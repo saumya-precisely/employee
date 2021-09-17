@@ -1,7 +1,7 @@
-export interface Employee {
-  id: number;
-  employee_name: string;
-  employee_salary: number;
-  employee_age: number;
-  profile_image: string;
+export class Employee {
+  id: number | undefined;
+  employee_name: string = '';
+  employee_salary: number | undefined;
+  employee_age: number | undefined;
+  profile_image: string = '';
 }

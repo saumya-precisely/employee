@@ -1,1 +1,34 @@
-<p>form works!</p>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Enter name"
+      formControlName="employee_name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input
+      type="text"
+      class="form-control"
+      id="age"
+      placeholder="Enter age"
+      formControlName="employee_age"
+    />
+  </div>
+  <div class="form-group">
+    <label for="salary">Salary</label>
+    <input
+      type="text"
+      class="form-control"
+      id="salary"
+      placeholder="Enter salary"
+      formControlName="employee_salary"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
