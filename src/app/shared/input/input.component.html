@@ -1,1 +1,16 @@
-<p>input works!</p>
+<div class="form-group mb-2">
+  <label for="name">{{ label }}</label>
+  <input
+    type="text"
+    class="form-control"
+    id="name"
+    placeholder="Enter name"
+    [formControl]="control"
+    [ngClass]="{ 'is-invalid': showErrors() }"
+  />
+  <ng-container *ngIf="showErrors()">
+    <div class="invalid-feedback" *ngIf="control.errors.required">
+      Value is required
+    </div>
+  </ng-container>
+</div>

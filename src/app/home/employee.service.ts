@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Employee } from './employee';
-const baseUrl = 'http://dummy.restapiexample.com/api/v1/';
+import { Observable } from 'rxjs';
+const baseUrl = 'http://localhost:3000/';
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
   constructor(private http: HttpClient) {}
-  getEmployees() {
-    return this.http.get<Employee>(baseUrl + 'employees');
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(baseUrl + 'employees');
   }
-  // create(data:Employee) {
-  //   return this.http.post(baseUrl, data);
-  // }
+  create(data: Employee) {
+    const headers = new HttpHeaders();
+    return this.http.post(baseUrl + 'employees', data);
+  }
 
-  // update(id:number, data:Employee) {
-  //   return this.http.put(`${baseUrl}/${id}`, data);
-  // }
+  update(id: number, data: Employee) {
+    return this.http.put(`${baseUrl}employees/${id}`, data);
+  }
 
-  // delete(id:number) {
-  //   return this.http.delete(`${baseUrl}/${id}`);
-  // }
+  delete(id: number) {
+    return this.http.delete(`${baseUrl}employees/${id}`);
+  }
+
+  getEmployeebyId(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${baseUrl}employees/${id}`);
+  }
 }
